@@ -2,6 +2,7 @@
 using OnlineStoreCORE;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,5 +20,13 @@ namespace OnlineStoreDAL
         {
             return new ApplicationDbContext();
         }
+        public DbSet<Product> Products { get; set; }
+        public DbSet<Image> Images { get; set; }
+
+
+        public DbSet<ShoppingCart> ShoppingCarts { get; set; }
+
+        public DbSet<Order> Orders { get; set; }
+
     }
 }

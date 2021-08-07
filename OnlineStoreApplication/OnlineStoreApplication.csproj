@@ -86,11 +86,24 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class1.cs" />
+    <Compile Include="GenericManager.cs" />
+    <Compile Include="ImageManager.cs" />
+    <Compile Include="ProductManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\OnlineStoreCORE\OnlineStoreCORE.csproj">
+      <Project>{f4168007-2a47-44ac-a966-16f8a8aa182a}</Project>
+      <Name>OnlineStoreCORE</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OnlineStoreDAL\OnlineStoreDAL.csproj">
+      <Project>{b0ba0c14-897e-43d1-8d7d-866fc623dd31}</Project>
+      <Name>OnlineStoreDAL</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

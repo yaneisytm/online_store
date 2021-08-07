@@ -1,6 +1,5 @@
 ﻿@model IEnumerable<OnlineStoreCORE.Product>
 
-
 @{
     ViewBag.Title = "Index";
 }
@@ -32,30 +31,25 @@
         {
             <div class="col-md-4 mt-4 mt-sm-0 card-container">
                 <div class="card text-center product p-4 pt-5 border-0 h-100 rounded-0">
-
                     <div class="card-body p-4 py-0 h-xs-440p">
                         <div id="myCarousel" class="carousel slide" data-ride="carousel">
-            
-    
                             <div class="carousel-inner">
-
-                                <div class="item active ">
-                                    <img src="https://mdbootstrap.com/img/Marketing/mdb-press-pack/mdb-main.jpg" >
+                                <div class="item active">
+                                    <img src=@item.Images[0].path>
                                     <div class="carousel-caption">
                                         <h3>@Html.DisplayFor(modelItem => item.Name)</h3>
                                         <p>@Html.DisplayFor(modelItem => item.Price)</p>
-
                                     </div>
                                 </div>
                                 @for (int i = 1; i < item.Images.Count; i++)
                                 {
                                     var imag = item.Images[i];
-                                    <div class="item ">
+                                    <div class="item">
                                         <img src=@imag.path alt=@imag.path>
+                                        @*<img src="~/Uploads/photo_2021-06-27_18-56-23.jpg" alt=@imag.path>*@
                                         <div class="carousel-caption">
                                             <h3>@Html.DisplayFor(modelItem => item.Name)</h3>
                                             <p>@Html.DisplayFor(modelItem => item.Price)</p>
-
                                         </div>
                                     </div>
                                 }

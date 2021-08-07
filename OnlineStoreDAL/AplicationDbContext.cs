@@ -28,5 +28,6 @@ namespace OnlineStoreDAL
 
         public DbSet<Order> Orders { get; set; }
 
+        public DbSet<RolesApp> IdentityRoles { get; set; }
     }
 }

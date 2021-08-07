@@ -86,6 +86,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AplicationDbContext.cs" />
+    <Compile Include="Migrations\202108070312352_InitialCreate.cs" />
+    <Compile Include="Migrations\202108070312352_InitialCreate.Designer.cs">
+      <DependentUpon>202108070312352_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202108072054334_add roles.cs" />
+    <Compile Include="Migrations\202108072054334_add roles.Designer.cs">
+      <DependentUpon>202108072054334_add roles.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -97,6 +106,14 @@
       <Project>{f4168007-2a47-44ac-a966-16f8a8aa182a}</Project>
       <Name>OnlineStoreCORE</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202108070312352_InitialCreate.resx">
+      <DependentUpon>202108070312352_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202108072054334_add roles.resx">
+      <DependentUpon>202108072054334_add roles.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

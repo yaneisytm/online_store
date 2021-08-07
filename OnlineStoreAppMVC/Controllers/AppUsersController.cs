@@ -10,6 +10,8 @@ using OnlineStoreCORE;
 using OnlineStoreDAL;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using OnlineStoreAppMVC;
+using Microsoft.AspNet.Identity.Owin;
 
 namespace OnlineStore
 {
@@ -50,14 +52,19 @@ namespace OnlineStore
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "UserName,Surname,Email,IsAdmin")] ApplicationUser appUser)
+        public ActionResult Create([Bind(Include = "UserName,Surname,Email,PasswordHash, IsAdmin")] ApplicationUser appUser)
         {
-            if (ModelState.IsValid)
+            if (ModelState.IsValid
+
             {
-              
-                    UserManager<ApplicationUser> manager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(db));
-                    IdentityResult result = manager.Create(appUser, appUser.PasswordHash);
-                    if (result.Succeeded && appUser.IsAdmin)
+                //ApplicationUserManager managerUser = new ApplicationUserManager(new UserStore<ApplicationUser>(db));
+                ApplicationUserManager managerUser = HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
+
+
+                IdentityResult result = managerUser.Create(appUser, appUser.PasswordHash);
+
+               
+                if (result.Succeeded && appUser.IsAdmin)
                     {
                         // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
                         //string code = manager.GenerateEmailConfirmationToken(user.Id);
@@ -65,9 +72,9 @@ namespace OnlineStore
                         //manager.SendEmail(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>.");
 
                     }
-                    var result1 = manager.AddToRole(appUser.Id, "Admin");
-                db.Users.Add(appUser);
-                db.SaveChanges();
+                //var result1 = manager.AddToRole(appUser.Id, "Admin");
+                //db.Users.Add(appUser);
+                //db.SaveChanges();
                 return RedirectToAction("Index");
             }
 

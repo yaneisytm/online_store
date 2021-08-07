@@ -85,7 +85,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
     <Compile Include="GenericManager.cs" />
     <Compile Include="ImageManager.cs" />
     <Compile Include="ProductManager.cs" />

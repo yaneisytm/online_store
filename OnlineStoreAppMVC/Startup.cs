@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 ﻿using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.Owin;
@@ -18,6 +17,7 @@ namespace OnlineStoreAppMVC
         }
         private void createRolesandUsers()
         {
+
             ApplicationDbContext context = new ApplicationDbContext();
             var UserManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(context));
             var roleManager = new RoleManager<RolesApp>(new RoleStore<RolesApp>(context));
@@ -53,19 +53,3 @@ namespace OnlineStoreAppMVC
         }
     }
 }
-=======
-﻿using Microsoft.Owin;
-using Owin;
-
-[assembly: OwinStartupAttribute(typeof(OnlineStoreAppMVC.Startup))]
-namespace OnlineStoreAppMVC
-{
-    public partial class Startup
-    {
-        public void Configuration(IAppBuilder app)
-        {
-            ConfigureAuth(app);
-        }
-    }
-}
->>>>>>> 90b66a2fd72e827b7661bf43dd009c1eed27c9e4

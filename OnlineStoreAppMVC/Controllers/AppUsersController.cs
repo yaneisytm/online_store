@@ -73,7 +73,7 @@ namespace OnlineStore
 
                 IdentityResult result = UserManager.Create(appUser, appUser.PasswordHash);
 
-                managerUser.AddToRole(appUser.Id, (string)UserRole);
+                UserManager.AddToRole(appUser.Id, (string)UserRole);
                
 
                 return RedirectToAction("Index");

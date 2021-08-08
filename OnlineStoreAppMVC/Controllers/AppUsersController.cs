@@ -65,16 +65,17 @@ namespace OnlineStore
         public ActionResult Create([Bind(Include = "UserName,Surname,Email,PasswordHash, Roles")] ApplicationUser appUser, object UserRole)
         {
             if (ModelState.IsValid)
-
             {
 
                 //ApplicationUserManager managerUser = new ApplicationUserManager(new UserStore<ApplicationUser>(db));
-                ApplicationUserManager managerUser = HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
-                IdentityResult result = managerUser.Create(appUser, appUser.PasswordHash);
+                //ApplicationUserManager managerUser = HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
+                var UserManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(db));
+
+                IdentityResult result = UserManager.Create(appUser, appUser.PasswordHash);
 
                 managerUser.AddToRole(appUser.Id, (string)UserRole);
+               
 
-             
                 return RedirectToAction("Index");
             }
             ViewBag.Roles = getRoles();

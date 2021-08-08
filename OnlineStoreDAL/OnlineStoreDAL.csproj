@@ -94,6 +94,10 @@
     <Compile Include="Migrations\202108072054334_add roles.Designer.cs">
       <DependentUpon>202108072054334_add roles.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202108072351222_remove error.cs" />
+    <Compile Include="Migrations\202108072351222_remove error.Designer.cs">
+      <DependentUpon>202108072351222_remove error.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -113,6 +117,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202108072054334_add roles.resx">
       <DependentUpon>202108072054334_add roles.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202108072351222_remove error.resx">
+      <DependentUpon>202108072351222_remove error.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

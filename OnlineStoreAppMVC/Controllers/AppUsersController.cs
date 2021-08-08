@@ -40,10 +40,20 @@ namespace OnlineStore
             }
             return View(appUser);
         }
+        private List<SelectListItem> getRoles()
+        {
 
+            var allRoles = (new ApplicationDbContext()).IdentityRoles.OrderBy(r => r.Name).ToList().Select(rr =>
+
+                      new SelectListItem { Value = rr.Name.ToString(), Text = rr.Name }).ToList();
+
+            return allRoles;
+
+        }
         // GET: AppUsers/Create
         public ActionResult Create()
         {
+            ViewBag.Roles = getRoles();
             return View();
         }
 
@@ -52,32 +62,22 @@ namespace OnlineStore
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "UserName,Surname,Email,PasswordHash, IsAdmin")] ApplicationUser appUser)
+        public ActionResult Create([Bind(Include = "UserName,Surname,Email,PasswordHash, Roles")] ApplicationUser appUser, object UserRole)
         {
-            if (ModelState.IsValid
+            if (ModelState.IsValid)
 
             {
+
                 //ApplicationUserManager managerUser = new ApplicationUserManager(new UserStore<ApplicationUser>(db));
                 ApplicationUserManager managerUser = HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
-
-
                 IdentityResult result = managerUser.Create(appUser, appUser.PasswordHash);
 
-               
-                if (result.Succeeded && appUser.IsAdmin)
-                    {
-                        // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
-                        //string code = manager.GenerateEmailConfirmationToken(user.Id);
-                        //string callbackUrl = IdentityHelper.GetUserConfirmationRedirectUrl(code, user.Id, Request);
-                        //manager.SendEmail(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>.");
+                managerUser.AddToRole(appUser.Id, (string)UserRole);
 
-                    }
-                //var result1 = manager.AddToRole(appUser.Id, "Admin");
-                //db.Users.Add(appUser);
-                //db.SaveChanges();
+             
                 return RedirectToAction("Index");
             }
-
+            ViewBag.Roles = getRoles();
             return View(appUser);
         }
 
@@ -93,6 +93,7 @@ namespace OnlineStore
             {
                 return HttpNotFound();
             }
+            ViewBag.Roles = getRoles();
             return View(appUser);
         }
 
@@ -109,6 +110,7 @@ namespace OnlineStore
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ViewBag.Roles = getRoles();
             return View(appUser);
         }
 

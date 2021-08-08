@@ -3,7 +3,6 @@
 @{
     ViewBag.Title = "Create";
 }
-
 <h2>Create</h2>
 
 
@@ -46,13 +45,12 @@
                 @Html.ValidationMessageFor(model => model.PasswordHash, "", new { @class = "text-danger" })
             </div>
         </div>
+       
         <div class="form-group">
-            @Html.LabelFor(model => model.IsAdmin, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(m => m.Roles, new { @class = "col-md-2 control-label" })
             <div class="col-md-10">
-                <div class="checkbox">
-                    @Html.EditorFor(model => model.IsAdmin)
-                    @Html.ValidationMessageFor(model => model.IsAdmin, "", new { @class = "text-danger" })
-                </div>
+                @Html.DropDownList("UserRole", (IEnumerable<SelectListItem>)ViewBag.Roles, "Select ...")
+
             </div>
         </div>
        

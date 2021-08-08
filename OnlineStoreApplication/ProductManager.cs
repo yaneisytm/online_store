@@ -27,7 +27,7 @@ namespace OnlineStoreApplication
             return Context.Products.ToList();
         }
 
-        public void Remove(Product prod) {
+        public new void Remove(Product prod) {
             var imgs = new List<Image>(prod.Images);
             foreach (var item in imgs)
                 Context.Images.Remove(item);

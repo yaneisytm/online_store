@@ -62,7 +62,7 @@ namespace OnlineStore
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "UserName,Surname,Email,PasswordHash, Roles")] ApplicationUser appUser, object UserRole)
+        public ActionResult Create([Bind(Include = "UserName,Surname,Email,PasswordHash, Roles")] ApplicationUser appUser, string UserRole)
         {
             if (ModelState.IsValid)
             {

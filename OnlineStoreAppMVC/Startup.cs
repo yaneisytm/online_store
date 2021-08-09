@@ -36,11 +36,11 @@ namespace OnlineStoreAppMVC
                 UserName = "Admin",
                 Email = "admin@mail.com",
                 Surname = "Admin",
-                PasswordHash = "adminpass",
+                PasswordHash = "Polo@123",
             };
 
 
-            var chkUser = UserManager.Create(user);
+            IdentityResult chkUser = UserManager.Create(user, user.PasswordHash);
 
             //Add default User to Role Admin    
             if (chkUser.Succeeded)
@@ -48,7 +48,7 @@ namespace OnlineStoreAppMVC
                 var result1 = UserManager.AddToRole(user.Id, "Admin");
 
             }
-          
+
 
         }
     }

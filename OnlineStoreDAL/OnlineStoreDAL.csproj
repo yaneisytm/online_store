@@ -102,6 +102,10 @@
     <Compile Include="Migrations\202108080226206_aa.Designer.cs">
       <DependentUpon>202108080226206_aa.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202108100605315_delete shopping cart.cs" />
+    <Compile Include="Migrations\202108100605315_delete shopping cart.Designer.cs">
+      <DependentUpon>202108100605315_delete shopping cart.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -127,6 +131,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202108080226206_aa.resx">
       <DependentUpon>202108080226206_aa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202108100605315_delete shopping cart.resx">
+      <DependentUpon>202108100605315_delete shopping cart.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

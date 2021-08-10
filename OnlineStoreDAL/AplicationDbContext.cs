@@ -27,6 +27,8 @@ namespace OnlineStoreDAL
         public DbSet<ShoppingCart> ShoppingCarts { get; set; }
 
         public DbSet<Order> Orders { get; set; }
+        public DbSet<OrderLine> OrdersLine { get; set; }
+
 
         public DbSet<RolesApp> IdentityRoles { get; set; }
     }

@@ -1,0 +1,13 @@
+﻿@{
+    ViewBag.Title = "Success";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Successfull payment</h2>
+
+<div>
+    <h4>Delivery address: @ViewBag.address</h4>
+</div>
+<p>
+    @Html.ActionLink("Back to Home", "Index", "Home")
+</p>

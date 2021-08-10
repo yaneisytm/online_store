@@ -10,7 +10,6 @@ namespace OnlineStoreApplication
 {
     public class ProductManager : GenericManager<Product>
     {
-        private ImageManager imageManager = new ImageManager(new ApplicationDbContext());
 
         private string imgServerPath { get; set; }
         private string defaultImg { get; set; }
@@ -25,6 +24,10 @@ namespace OnlineStoreApplication
         public List<Product> GetAll()
         {
             return Context.Products.ToList();
+        }
+        public List<Product> GetAllinStock()
+        {
+            return Context.Products.Where(p => p.Stock > 0).ToList();
         }
 
         public new void Remove(Product prod) {
@@ -55,6 +58,10 @@ namespace OnlineStoreApplication
             }
         }
 
+        public void AddInOrder(OrderLine orderline) {
+            Context.OrdersLine.Add(orderline);
+            Context.SaveChanges();
+        }
        public void Insert(Product product, List<HttpPostedFileBase> files, HttpServerUtilityBase Server)
         {
             List<Image> images = new List<Image>();

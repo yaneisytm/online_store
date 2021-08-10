@@ -78,6 +78,7 @@ namespace OnlineStore
 
                 return RedirectToAction("Index");
             }
+
             ViewBag.Roles = getRoles();
             return View(appUser);
         }

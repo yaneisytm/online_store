@@ -11,14 +11,13 @@ namespace OnlineStoreCORE
         public int Id { get; set; }
         public ApplicationUser User { get; set; }
         public List<OrderLine> OrderLines { get; set; }
-        public ShoppingCart Shoppingcart { get; set; }
         public string Status { get; set; }
         public string DeliveryAddress { get; set; }
 
     }
     public class OrderLine {
         public int Id { get; set; }
-        public Product Product { get; set; }
+        public virtual Product Product { get; set; }
         public decimal Price { get; set; }
         public int Quantity { get; set; }
 
@@ -26,7 +25,11 @@ namespace OnlineStoreCORE
         {
             Product = product;
             Quantity = quantity;
-            Price =  product.Price * quantity;
+            Price = product.Price * quantity;
+
+        }
+        public OrderLine()
+        {
 
         }
     }

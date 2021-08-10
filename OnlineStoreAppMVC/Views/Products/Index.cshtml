@@ -5,12 +5,64 @@
 }
 
 <head>
+    <style>
+        .item {
+           width:250px; /* or whatever width you want. */
+           height:150px;
+           max-height:150px;
+           max-width:250px; /* or whatever width you want. */
+           display: inline-block;
+        
+        }
+        .delete {
+            border: none;
+            outline: 0;
+            padding: 12px;
+            color: white;
+            background-color: #000;
+            text-align: center;
+            cursor: pointer;
+            width: 100%;
+            font-size: 18px;
+            max-width: 303px;
+        }
+        .card {
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+            max-width: 300px;
+            margin: auto;
+            text-align: center;
+            font-family: arial;
+        }
+
+        .price {
+            color: grey;
+            font-size: 22px;
+        }
+
+        .card button {
+            border: none;
+            outline: 0;
+            padding: 12px;
+            color: white;
+            background-color: #000;
+            text-align: center;
+            cursor: pointer;
+            width: 100%;
+            font-size: 18px;
+        }
+
+            .card button:hover {
+                opacity: 0.7;
+            }
+    </style>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="./src/bootstrap-input-spinner.js"></script>
+
 </head>
 
 <body> 
@@ -24,17 +76,13 @@
     <div class="row px-5 pt-5">
         @foreach (var item in Model)
         {
-            <div class="col-md-4 mt-4 mt-sm-0 card-container">
-                <div class="card text-center product p-4 pt-5 border-0 h-100 rounded-0">
-                    <div class="card-body p-4 py-0 h-xs-440p">
-                        <div id="myCarousel" class="carousel slide" data-ride="carousel">
+            <div class="card">
+               
+                        <div id="myCarousel" class="fixed-img carousel slide" data-ride="carousel">
                             <div class="carousel-inner">
                                 <div class="item active">
                                     <img src=@item.Images[0].path>
-                                    <div class="carousel-caption">
-                                        <h3>@Html.DisplayFor(modelItem => item.Name)</h3>
-                                        <p>@Html.DisplayFor(modelItem => item.Price)</p>
-                                    </div>
+                                    
                                 </div>
                                 @for (int i = 1; i < item.Images.Count; i++)
                                 {
@@ -51,29 +99,54 @@
                             </div>
 
                         </div>
-                    </div>
+                
+
+                <h1>@Html.DisplayFor(modelItem => item.Name)</h1>
+                <p class="price"> $ @Html.DisplayFor(modelItem => item.Price)</p>
+
+
+
+                <form method="get" action="@Url.Action("AddCart", "Products")">
+                    <input hidden name="id" value=@item.Id />
 @if (@User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+{ <p class="price">On Stock : @Html.DisplayFor(modelItem => item.Stock)</p>}
+else if (@User.Identity.IsAuthenticated)
 {
 
-    <p class="btn w-100 px-4 mx-auto">
+                    <input id="quantity" type="number" name="quantity" value="1" style="margin: 12px;" min="1" max=@item.Stock step="1" />
+                    <input class="delete" type="submit" value="Add to cart" />
 
-        @*<input type="submit" onclick="location.href='@Url.Action("Edit", "Products", new { id=item.Id })'" class="btn btn-dark btn-lg w-100" value="Edit">*@
-        <input type="submit" onclick="location.href='@Url.Action("Delete", "Products", new { id = item.Id })'" class="btn btn-dark btn-lg w-100" value="Delete">
-        @*<input type="submit"  onclick="location.href='@Url.Action("Details", "Products", new { id=item.Id })'"class="btn btn-dark btn-lg w-100" value="Details">*@
+}
 
-    </p>
-}
-else if (@User.Identity.IsAuthenticated)
-{ <p class="btn w-100 px-4 mx-auto">
-                        <input type="submit" class="btn btn-dark btn-lg w-100" name="add-cart" value="Buy Now">
-                    </p>
-}
-                   
-                   
-                </div>
+
+                </form>
+
+               @* <input type="submit" onclick="location.href='@Url.Action("AddCart", "Products", new { id = item.Id })'" class="delete" value="Add to cart">*@ 
+                    
+                    @if (@User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+                    {
+
+
+
+                       <input type="submit" onclick="location.href='@Url.Action("Delete", "Products", new { id = item.Id})'" class="delete" value="Delete"> 
+                    }
             </div>
+
+
+
+
+
+ 
         }
       
     </div>
 
+    <script>
+        function changeHref(id) {
+            var url = '@Url.Action("AddCart", "Products")';
+            var quantity = $('#quantity').val();
+            window.location.href = url + '/?id=' + id ;
+        }
+
+        </script>
 </body>

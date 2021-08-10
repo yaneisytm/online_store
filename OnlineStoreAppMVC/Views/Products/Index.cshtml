@@ -14,11 +14,11 @@
     <link rel="stylesheet" href="~/Views/Products/Products.css">
 </head>
 
-<body>
+<body> 
     @if (@User.Identity.IsAuthenticated && User.IsInRole("Admin"))
     {
         <p class="btn" style="margin-top: 27px;">
-            <input  onclick="location.href='@Url.Action("Create", "Products")'" class="btn btn-dark btn-lg w-100" name="create new" value="Create">
+            <input  onclick="location.href='@Url.Action("Create", "Products")'" class="btn btn-dark btn-lg w-100" name="create new" value="Create new Product ">
         </p>
     }
    
@@ -52,17 +52,24 @@
 
                         </div>
                     </div>
+@if (@User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+{
 
-                    <p class="btn w-100 px-4 mx-auto">
-                        <input type="submit" class="btn btn-dark btn-lg w-100" name="add-cart" value="Buy Now">                      
-                     </p>
-                    <p class="btn w-100 px-4 mx-auto">
+    <p class="btn w-100 px-4 mx-auto">
 
-                        @*<input type="submit" onclick="location.href='@Url.Action("Edit", "Products", new { id=item.Id })'" class="btn btn-dark btn-lg w-100" value="Edit">*@
-                        <input type="submit"  onclick="location.href='@Url.Action("Delete", "Products", new { id=item.Id })'" class="btn btn-dark btn-lg w-100" value="Delete">
-                        @*<input type="submit"  onclick="location.href='@Url.Action("Details", "Products", new { id=item.Id })'"class="btn btn-dark btn-lg w-100" value="Details">*@
+        @*<input type="submit" onclick="location.href='@Url.Action("Edit", "Products", new { id=item.Id })'" class="btn btn-dark btn-lg w-100" value="Edit">*@
+        <input type="submit" onclick="location.href='@Url.Action("Delete", "Products", new { id = item.Id })'" class="btn btn-dark btn-lg w-100" value="Delete">
+        @*<input type="submit"  onclick="location.href='@Url.Action("Details", "Products", new { id=item.Id })'"class="btn btn-dark btn-lg w-100" value="Details">*@
 
+    </p>
+}
+else if (@User.Identity.IsAuthenticated)
+{ <p class="btn w-100 px-4 mx-auto">
+                        <input type="submit" class="btn btn-dark btn-lg w-100" name="add-cart" value="Buy Now">
                     </p>
+}
+                   
+                   
                 </div>
             </div>
         }

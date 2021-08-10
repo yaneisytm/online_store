@@ -1,3 +1,4 @@
+
 ﻿using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using System;
@@ -20,7 +21,6 @@ namespace OnlineStoreCORE
             
         }
         public string Surname { get; set; }
-        public bool IsAdmin { get; set; }
         public ShoppingCart ShoppingCart { get; set; }
     }
 }

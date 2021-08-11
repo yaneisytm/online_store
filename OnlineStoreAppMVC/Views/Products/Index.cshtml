@@ -7,10 +7,9 @@
 <head>
     <style>
         .item {
-           width:250px; /* or whatever width you want. */
+           width:auto; /* or whatever width you want. */
            height:150px;
            max-height:150px;
-           max-width:250px; /* or whatever width you want. */
            display: inline-block;
         
         }
@@ -72,68 +71,75 @@
             <input  onclick="location.href='@Url.Action("Create", "Products")'" class="btn btn-dark btn-lg w-100" name="create new" value="Create new Product ">
         </p>
     }
+    @{ int c = 0;
+      }
    
-    <div class="row px-5 pt-5">
         @foreach (var item in Model)
         {
-            <div class="card">
-                <div id="myCarousel" class="fixed-img carousel slide" data-ride="carousel">
-                    <div class="carousel-inner">
-                        <div class="item active">
-                            <img src=@item.Images[0].path>
-                                    
-                        </div>
-                        @for (int i = 1; i < item.Images.Count; i++)
-                        {
-                            var imag = item.Images[i];
-                            <div class="item">
-                                <img src=@imag.path alt=@imag.path>
-                            </div>
-                        }
+            if (c % 3 == 0)
+            {
+                <div class="row px-5 pt-5">
                     </div>
 
-                </div>
-                
+            }
+                c++;
 
-                <h1>@Html.DisplayFor(modelItem => item.Name)</h1>
-                <p class="price"> $ @Html.DisplayFor(modelItem => item.Price)</p>
+                    <div class="col-lg-4 col-md-4">
+                        <div class="card">
+                            <div id="myCarousel" class="fixed-img carousel slide" data-ride="carousel">
+                                <div class="carousel-inner">
+                                    <div class="item active">
+                                        <img src=@item.Images[0].path>
+
+                                    </div>
+                                    @for (int i = 1; i < item.Images.Count; i++)
+                                    {
+                                        var imag = item.Images[i];
+                                        <div class="item">
+                                            <img src=@imag.path alt=@imag.path>
+                                        </div>
+                                    }
+                                </div>
+
+                            </div>
+
+
+                            <h1>@Html.DisplayFor(modelItem => item.Name)</h1>
+                            <p class="price"> $ @Html.DisplayFor(modelItem => item.Price)</p>
 
 
 
-                <form method="get" action="@Url.Action("AddCart", "Products")">
-                    <input hidden name="id" value=@item.Id />
-@if (@User.Identity.IsAuthenticated && User.IsInRole("Admin"))
-{ <p class="price">On Stock : @Html.DisplayFor(modelItem => item.Stock)</p>}
-else if (@User.Identity.IsAuthenticated)
-{
+                            <form method="get" action="@Url.Action("AddCart", "Products")">
+                                <input hidden name="id" value=@item.Id />
+                                @if (@User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+                                { <p class="price">On Stock : @Html.DisplayFor(modelItem => item.Stock)</p>}
+                                else if (@User.Identity.IsAuthenticated)
+                                {
 
-                    <input id="quantity" type="number" name="quantity" value="1" style="margin: 12px;" min="1" max=@item.Stock step="1" />
-                    <input class="delete" type="submit" value="Add to cart" />
+                                    <input id="quantity" type="number" name="quantity" value="1" style="margin: 12px;" min="1" max=@item.Stock step="1" />
+                                    <input class="delete" type="submit" value="Add to cart" />
 
-}
+                                }
 
 
-                </form>
+                            </form>
 
-               @* <input type="submit" onclick="location.href='@Url.Action("AddCart", "Products", new { id = item.Id })'" class="delete" value="Add to cart">*@ 
-                    
-                    @if (@User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+                            @* <input type="submit" onclick="location.href='@Url.Action("AddCart", "Products", new { id = item.Id })'" class="delete" value="Add to cart">*@
+
+                            @if (@User.Identity.IsAuthenticated && User.IsInRole("Admin"))
                     {
 
 
 
-                       <input type="submit" onclick="location.href='@Url.Action("Delete", "Products", new { id = item.Id})'" class="delete" value="Delete"> 
+                                <input type="submit" onclick="location.href='@Url.Action("Delete", "Products", new { id = item.Id})'" class="delete" value="Delete">
+                            }
+                        </div>
+
+
+                    </div>
                     }
-            </div>
 
-
-
-
-
- 
-        }
-      
-    </div>
+                </div>
 
     <script>
         function changeHref(id) {

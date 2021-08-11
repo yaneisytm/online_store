@@ -7,13 +7,13 @@ namespace OnlineStoreDAL.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.0-30225")]
-    public sealed partial class deleteshoppingcart : IMigrationMetadata
+    public sealed partial class initial : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(deleteshoppingcart));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(initial));
         
         string IMigrationMetadata.Id
         {
-            get { return "202108100605315_delete shopping cart"; }
+            get { return "202108110033492_initial"; }
         }
         
         string IMigrationMetadata.Source

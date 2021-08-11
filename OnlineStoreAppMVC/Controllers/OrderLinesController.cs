@@ -14,29 +14,17 @@ namespace OnlineStoreAppMVC.Controllers
 {
     public class OrderLinesController : Controller
     {
-        private OrderLineManager manager = new OrderLineManager(new ApplicationDbContext());
+        private ShoppingCartManager manager = new ShoppingCartManager(new ApplicationDbContext());
 
 
         // GET: OrderLines
         public ActionResult Index()
         {
-            return View(manager.GetAll());
+            return View(manager.GetrderLinesByUser(User.Identity.Name));
+            ;
         }
 
-        // GET: OrderLines/Details/5
-        public ActionResult Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            OrderLine orderLine = manager.GetById((int)id);
-            if (orderLine == null)
-            {
-                return HttpNotFound();
-            }
-            return View(orderLine);
-        }
+      
 
         // GET: OrderLines/Create
         public ActionResult Create()
@@ -110,7 +98,8 @@ namespace OnlineStoreAppMVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            OrderLine orderLine = manager.Delete((int)id);
+            var currentuser = manager.GetCurrentUser(User.Identity.Name);
+            var shoppingCart = manager.Delete(id, currentuser);
             return RedirectToAction("Index");
         }
 

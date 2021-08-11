@@ -81,14 +81,29 @@ namespace OnlineStore.Controllers
 
         public ActionResult AddCart(string id, string quantity)
         {
+            var user = manager.GetCurrentUser(User.Identity.Name);
             int id_ = int.Parse(id);
             int quantity_ = int.Parse(quantity);
 
             Product product = manager.GetById(id_);
             product.Stock = product.Stock - quantity_;
             manager.Edit(product);
-            var orderLine = new OrderLine(product, quantity_);
-            manager.AddInOrder(orderLine);
+
+            var old_ol = user.ShoppingCart.OrderLines.Where(o => o.Product.Id == product.Id).ToList();
+            var orderline = new OrderLine();
+            if (old_ol.Count > 0)
+            {
+                orderline = old_ol.First();
+                orderline.Quantity += quantity_;
+
+            }
+            else {
+                orderline.Product = product;
+                orderline.Quantity = quantity_;
+                user.ShoppingCart.OrderLines.Add(orderline);
+            }
+
+            manager.Update(user);
             return RedirectToAction("Index");
         }
     }

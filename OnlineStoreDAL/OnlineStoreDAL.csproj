@@ -86,25 +86,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AplicationDbContext.cs" />
-    <Compile Include="Migrations\202108070312352_InitialCreate.cs" />
-    <Compile Include="Migrations\202108070312352_InitialCreate.Designer.cs">
-      <DependentUpon>202108070312352_InitialCreate.cs</DependentUpon>
+    <Compile Include="Migrations\202108110033046_InitialCreate.cs" />
+    <Compile Include="Migrations\202108110033046_InitialCreate.Designer.cs">
+      <DependentUpon>202108110033046_InitialCreate.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202108072054334_add roles.cs" />
-    <Compile Include="Migrations\202108072054334_add roles.Designer.cs">
-      <DependentUpon>202108072054334_add roles.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202108072351222_remove error.cs" />
-    <Compile Include="Migrations\202108072351222_remove error.Designer.cs">
-      <DependentUpon>202108072351222_remove error.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202108080226206_aa.cs" />
-    <Compile Include="Migrations\202108080226206_aa.Designer.cs">
-      <DependentUpon>202108080226206_aa.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202108100605315_delete shopping cart.cs" />
-    <Compile Include="Migrations\202108100605315_delete shopping cart.Designer.cs">
-      <DependentUpon>202108100605315_delete shopping cart.cs</DependentUpon>
+    <Compile Include="Migrations\202108110033492_initial.cs" />
+    <Compile Include="Migrations\202108110033492_initial.Designer.cs">
+      <DependentUpon>202108110033492_initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -120,20 +108,11 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202108070312352_InitialCreate.resx">
-      <DependentUpon>202108070312352_InitialCreate.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202108110033046_InitialCreate.resx">
+      <DependentUpon>202108110033046_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202108072054334_add roles.resx">
-      <DependentUpon>202108072054334_add roles.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202108072351222_remove error.resx">
-      <DependentUpon>202108072351222_remove error.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202108080226206_aa.resx">
-      <DependentUpon>202108080226206_aa.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202108100605315_delete shopping cart.resx">
-      <DependentUpon>202108100605315_delete shopping cart.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202108110033492_initial.resx">
+      <DependentUpon>202108110033492_initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

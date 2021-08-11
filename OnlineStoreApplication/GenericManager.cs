@@ -1,6 +1,8 @@
-﻿using OnlineStoreDAL;
+﻿using OnlineStoreCORE;
+using OnlineStoreDAL;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Reflection;
 using System.Text;
@@ -17,6 +19,11 @@ namespace OnlineStoreApplication
             Context = context;
 
         }
+        public ApplicationUser GetCurrentUser(string mail) {
+            return Context.Users.Where(u => u.Email == mail).First();
+
+
+        }
  
         public void Add(T entity)
         {
@@ -30,6 +37,12 @@ namespace OnlineStoreApplication
             Context.SaveChanges();
 
         }
+        public void Update(ApplicationUser user)
+        {
+            Context.Entry(user).State = EntityState.Modified;
+            Context.SaveChanges();
+        }
+
         public void Dispose() {
             Context.Dispose();
         }

@@ -21,6 +21,9 @@ namespace OnlineStoreCORE
             
         }
         public string Surname { get; set; }
-        public ShoppingCart ShoppingCart { get; set; }
+        public virtual ShoppingCart ShoppingCart { get; set; }
+
+       
+       
     }
 }

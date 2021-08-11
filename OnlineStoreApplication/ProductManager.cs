@@ -58,11 +58,16 @@ namespace OnlineStoreApplication
             }
         }
 
-        public void AddInOrder(OrderLine orderline) {
-            Context.OrdersLine.Add(orderline);
+        public void AddInOrder(OrderLine orderline, ApplicationUser user) {
+            Context.OrderLines.Add(orderline);
             Context.SaveChanges();
         }
-       public void Insert(Product product, List<HttpPostedFileBase> files, HttpServerUtilityBase Server)
+        public void AddInOrder(OrderLine orderline)
+        {
+            Context.OrderLines.Add(orderline);
+            Context.SaveChanges();
+        }
+        public void Insert(Product product, List<HttpPostedFileBase> files, HttpServerUtilityBase Server)
         {
             List<Image> images = new List<Image>();
 

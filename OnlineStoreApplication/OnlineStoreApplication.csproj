@@ -88,7 +88,7 @@
   <ItemGroup>
     <Compile Include="GenericManager.cs" />
     <Compile Include="ImageManager.cs" />
-    <Compile Include="OrderLineManager.cs" />
+    <Compile Include="ShoppingCartManager.cs" />
     <Compile Include="ProductManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

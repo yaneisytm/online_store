@@ -7,13 +7,13 @@ namespace OnlineStoreDAL.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.0-30225")]
-    public sealed partial class addroles : IMigrationMetadata
+    public sealed partial class InitialCreate : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(addroles));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(InitialCreate));
         
         string IMigrationMetadata.Id
         {
-            get { return "202108072054334_add roles"; }
+            get { return "202108110033046_InitialCreate"; }
         }
         
         string IMigrationMetadata.Source

@@ -10,9 +10,11 @@ namespace OnlineStoreCORE
     {
         public int Id { get; set; }
         public ApplicationUser User { get; set; }
-        public List<OrderLine> OrderLines { get; set; }
+        public virtual List<OrderLine> OrderLines { get; set; }
         public string Status { get; set; }
         public string DeliveryAddress { get; set; }
+        public DateTime Date { get; set; }
+
 
     }
     public class OrderLine {

@@ -77,28 +77,22 @@
         @foreach (var item in Model)
         {
             <div class="card">
-               
-                        <div id="myCarousel" class="fixed-img carousel slide" data-ride="carousel">
-                            <div class="carousel-inner">
-                                <div class="item active">
-                                    <img src=@item.Images[0].path>
+                <div id="myCarousel" class="fixed-img carousel slide" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="item active">
+                            <img src=@item.Images[0].path>
                                     
-                                </div>
-                                @for (int i = 1; i < item.Images.Count; i++)
-                                {
-                                    var imag = item.Images[i];
-                                    <div class="item">
-                                        <img src=@imag.path alt=@imag.path>
-                                        @*<img src="~/Uploads/photo_2021-06-27_18-56-23.jpg" alt=@imag.path>*@
-                                        <div class="carousel-caption">
-                                            <h3>@Html.DisplayFor(modelItem => item.Name)</h3>
-                                            <p>@Html.DisplayFor(modelItem => item.Price)</p>
-                                        </div>
-                                    </div>
-                                }
-                            </div>
-
                         </div>
+                        @for (int i = 1; i < item.Images.Count; i++)
+                        {
+                            var imag = item.Images[i];
+                            <div class="item">
+                                <img src=@imag.path alt=@imag.path>
+                            </div>
+                        }
+                    </div>
+
+                </div>
                 
 
                 <h1>@Html.DisplayFor(modelItem => item.Name)</h1>

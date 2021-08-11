@@ -21,6 +21,41 @@
   z-index: -2;
 }
 
+element {
+    position: absolute;
+    bottom: -70px;
+    background: white;
+    border-width: 20px;
+    border-radius: 10px;
+    border: black;
+    color: beige;
+    outline-width: 10px;
+    outline: aquamarine;
+}
+
+#order-address {
+  position: absolute;
+    bottom: -75px;
+    background-color: white;
+    width: 300px;
+    color: black;
+    border: solid;
+    border-width: thin;
+}
+
+#order-address:-moz-placeholder {
+  color: #808080;
+}
+
+#order-address::-moz-placeholder {
+  color: #808080;
+}
+
+#order-address:-ms-input-placeholder {
+  color: #808080;
+}
+
+
 #card-btn {
   background-color: rgba(0, 0, 0, 0.1);
   /*color: #ffb242;*/

@@ -76,8 +76,8 @@ namespace OnlineStoreApplication
                 var file = files[i];
                 if (file == null)
                     break;
-                var originalFilename = Path.GetFileName(file.FileName);
-                // TODO: add random name
+                //var originalFilename = Path.GetFileName(file.FileName);
+                var originalFilename = Path.GetRandomFileName() + Path.GetExtension(file.FileName);
                 originalFilename = "user_" + originalFilename;
 
                 string path = Server.MapPath(imgServerPath);

@@ -24,21 +24,21 @@ namespace OnlineStoreAppMVC.Controllers
         // POST: Payment/Index
         [HttpPost, ActionName("Index")]
         [ValidateAntiForgeryToken]
-        public ActionResult Index(CardViewModel card)
+        public ActionResult Index(CardViewModel card, string address)
         {
             if (!ModelState.IsValid)
             {
                 return View(card);
             }
 
-            return RedirectToAction("Success");
+            return RedirectToAction("Success", new { address = address});
         }
 
         // Get: Payment/Success
-        public ActionResult Success()
+        public ActionResult Success(string address)
         {
-            var a = "".Split();
-            return Redirect("Home");
+            ViewBag.address = address;
+            return View();
         }
     }
  

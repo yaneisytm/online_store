@@ -24,8 +24,25 @@
         @Html.AntiForgeryToken()
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div id="form-errors">
-            <i class="fa fa-exclamation-triangle"></i>
-            @*<p id="card-error">"@ViewBag.error_msg"</p>*@
+            @*<ul class="list-group">
+                <li class="list-group-item">
+                @Html.ValidationMessageFor(model => model.CardNumber, "", new { @class = "text-danger" })
+                </li>
+                <li>
+                    @Html.ValidationMessageFor(model => model.CardHolder, "", new { @class = "text-danger" })
+                </li>
+                <li class="list-group-item">
+                @Html.ValidationMessageFor(model => model.ExpMonth, "", new { @class = "text-danger" })
+                </li>
+                <li class="list-group-item">
+                    @Html.ValidationMessageFor(model => model.ExpYear, "", new { @class = "text-danger" })
+                </li>
+                <li class="list-group-item">
+                    @Html.ValidationMessageFor(model => model.CVC, "", new { @class = "text-danger" })
+                </li>
+            </ul>*@
+
+            @*<i class="fa fa-exclamation-triangle"></i>*@
             <p>
                 @Html.ValidationMessageFor(model => model.CardNumber, "", new { @class = "text-danger" })
             </p>
@@ -110,8 +127,10 @@
                 </div>
                 <!--- end card back --->
                 <input type="text" id="card-token" />
+                
                 <div class="form-group">
-                    <button type="submit" id="card-btn">Submit</button>
+                    <input id="order-address" name="address" type="text" placeholder="Delivery address"/>
+                    <button type="submit" id="card-btn">Proceed</button>
                 </div>
             </div>
             <!--- end form container --->

@@ -23,10 +23,7 @@ namespace OnlineStore.Controllers
         // GET: Products
         public ActionResult Index()
         {
-            if(User.Identity.IsAuthenticated && User.IsInRole("Admin"))
-                return View(manager.GetAll());
-
-            return View(manager.GetAllinStock());
+            return View(manager.GetAll());
         }
 
     
@@ -56,6 +53,7 @@ namespace OnlineStore.Controllers
 
         // GET: Products/Delete/5
         public ActionResult Delete(int? id)
+
         {
             if (id == null)
             {
@@ -95,11 +93,13 @@ namespace OnlineStore.Controllers
             {
                 orderline = old_ol.First();
                 orderline.Quantity += quantity_;
+                orderline.Price = orderline.Quantity * orderline.Product.Price;
 
             }
             else {
                 orderline.Product = product;
                 orderline.Quantity = quantity_;
+                orderline.Price = orderline.Quantity * orderline.Product.Price;
                 user.ShoppingCart.OrderLines.Add(orderline);
             }
 

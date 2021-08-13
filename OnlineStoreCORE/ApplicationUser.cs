@@ -22,8 +22,14 @@ namespace OnlineStoreCORE
         }
         public string Surname { get; set; }
         public virtual ShoppingCart ShoppingCart { get; set; }
+        public virtual List<Order> Orders { get; set; }
+        public ApplicationUser()
+        {
+           
+            Orders = new List<Order>();
+        }
 
-       
-       
+
+
     }
 }

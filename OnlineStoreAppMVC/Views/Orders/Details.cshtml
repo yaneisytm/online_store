@@ -1,0 +1,80 @@
+﻿@model OnlineStoreCORE.Order
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Order</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Status)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DeliveryAddress)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DeliveryAddress)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Date)
+        </dd>
+
+    </dl>
+    @if (Model.OrderLines.Count() > 0)
+    {
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.OrderLines[0].Product)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.OrderLines[0].Quantity)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.OrderLines[0].Price)
+                </th>
+
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model.OrderLines)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Product.Name)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Quantity)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Price)
+                    </td>
+                   
+                </tr>
+            }
+
+
+
+        </table>
+    }
+ 
+</div>
+<p>
+    @Html.ActionLink("Back to List", "Index")
+</p>

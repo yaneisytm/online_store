@@ -20,7 +20,7 @@ namespace OnlineStoreApplication
         {
             return Context.OrderLines.Find(id);
         }
-        public List<OrderLine> GetrderLinesByUser(string mail)
+        public List<OrderLine> GetOrderLinesByUser(string mail)
         {
             var temp =  Context.Users.Where(s => s.Email == mail).ToList();
             if (temp.Count > 0)
@@ -39,6 +39,14 @@ namespace OnlineStoreApplication
             Context.SaveChanges();
         }
 
+        public void EmptyShoppingCart(string  mail)
+        {
+            var user = GetCurrentUser(mail);
+            user.ShoppingCart = new ShoppingCart();
+            Context.SaveChanges();
+                
+        }
+
         public OrderLine Delete(int id, ApplicationUser user)
         {
             OrderLine order = Context.OrderLines.Find(id);
@@ -53,6 +61,12 @@ namespace OnlineStoreApplication
             }
             return order;
 
+        }
+
+        public void AddOrder(Order order)
+        {
+            Context.Orders.Add(order);
+            Context.SaveChanges();
         }
     }
 }

@@ -130,8 +130,11 @@
                 
                 <div class="form-group">
                     <input id="order-address" name="address" type="text" placeholder="Delivery address"/>
-                    <button type="submit" id="card-btn">Proceed</button>
+                    <input class="card-btn" type="button" value="Buy" onclick="location.href='@Url.Action("CreateOrder", "Payment")'" />
+                   
+                     <button type="submit" id="card-btn">Proceed</button>
                 </div>
+
             </div>
             <!--- end form container --->
         </div>

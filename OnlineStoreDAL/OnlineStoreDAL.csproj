@@ -94,6 +94,14 @@
     <Compile Include="Migrations\202108110033492_initial.Designer.cs">
       <DependentUpon>202108110033492_initial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202108130848313_¨new¨.cs" />
+    <Compile Include="Migrations\202108130848313_¨new¨.Designer.cs">
+      <DependentUpon>202108130848313_¨new¨.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202108130937100_vhange model user, add order list.cs" />
+    <Compile Include="Migrations\202108130937100_vhange model user, add order list.Designer.cs">
+      <DependentUpon>202108130937100_vhange model user, add order list.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -113,6 +121,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202108110033492_initial.resx">
       <DependentUpon>202108110033492_initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202108130848313_¨new¨.resx">
+      <DependentUpon>202108130848313_¨new¨.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202108130937100_vhange model user, add order list.resx">
+      <DependentUpon>202108130937100_vhange model user, add order list.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

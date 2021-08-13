@@ -113,11 +113,23 @@
                                 <input hidden name="id" value=@item.Id />
                                 @if (@User.Identity.IsAuthenticated && User.IsInRole("Admin"))
                                 { <p class="price">On Stock : @Html.DisplayFor(modelItem => item.Stock)</p>}
+
                                 else if (@User.Identity.IsAuthenticated)
                                 {
-
                                     <input id="quantity" type="number" name="quantity" value="1" style="margin: 12px;" min="1" max=@item.Stock step="1" />
-                                    <input class="delete" type="submit" value="Add to cart" />
+
+                                    if (item.Stock > 0)
+                                    {
+                                        <input class="delete" type="submit" value="Add to cart" />
+
+                                    }
+                                    else
+                                    {
+                                        <input class="delete" disabled type="submit"style="border: 1px solid #999999;
+                                                                              background-color: #cccccc;
+                                                                              color: #666666;" value="Add to cart" />
+
+                                    }
 
                                 }
 
@@ -141,12 +153,5 @@
 
                 </div>
 
-    <script>
-        function changeHref(id) {
-            var url = '@Url.Action("AddCart", "Products")';
-            var quantity = $('#quantity').val();
-            window.location.href = url + '/?id=' + id ;
-        }
-
-        </script>
+   
 </body>

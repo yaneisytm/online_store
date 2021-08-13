@@ -20,7 +20,7 @@ namespace OnlineStoreAppMVC.Controllers
         // GET: OrderLines
         public ActionResult Index()
         {
-            return View(manager.GetrderLinesByUser(User.Identity.Name));
+            return View(manager.GetOrderLinesByUser(User.Identity.Name));
             ;
         }
 
@@ -102,7 +102,7 @@ namespace OnlineStoreAppMVC.Controllers
             var shoppingCart = manager.Delete(id, currentuser);
             return RedirectToAction("Index");
         }
-
+       
         protected override void Dispose(bool disposing)
         {
             if (disposing)

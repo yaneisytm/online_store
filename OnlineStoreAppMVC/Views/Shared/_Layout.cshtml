@@ -24,9 +24,15 @@
 ">
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
                     <li>@Html.ActionLink("Products", "Index", "Products")</li>
-                    
+                   
+
+                   @if (@User.Identity.IsAuthenticated && !User.IsInRole("Admin"))
+                   {
                     <li>@Html.ActionLink("Shopping Cart", "Index", "OrderLines")</li>
 
+                     <li>@Html.ActionLink("My orders", "Index", "Orders")</li>
+                   }
+                        
 
                 @if (@User.Identity.IsAuthenticated && User.IsInRole("Admin"))
 

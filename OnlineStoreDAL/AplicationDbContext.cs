@@ -28,6 +28,6 @@ namespace OnlineStoreDAL
         public DbSet<OrderLine> OrderLines { get; set; }
          public DbSet<RolesApp> IdentityRoles { get; set; }
 
-
+        public System.Data.Entity.DbSet<OnlineStoreCORE.Order> Orders { get; set; }
     }
 }

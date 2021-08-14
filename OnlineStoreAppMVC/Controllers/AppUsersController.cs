@@ -137,6 +137,22 @@ namespace OnlineStore
         public ActionResult DeleteConfirmed(string id)
         {
             ApplicationUser appUser = db.Users.Find(id);
+            var order_user = appUser.Orders;
+            var copy = order_user.ToList();
+            var cart_user = appUser.ShoppingCart;
+            db.ShoppingCarts.Remove(cart_user);
+
+            foreach (var item in copy)
+            {
+                var orderlines = item.OrderLines;
+                var copy_orderline = orderlines.ToList();
+                foreach (var ol in copy_orderline)
+                {
+                    db.OrderLines.Remove(ol);
+                }
+
+                db.Orders.Remove(item);
+            }
             db.Users.Remove(appUser);
             db.SaveChanges();
             return RedirectToAction("Index");

@@ -20,9 +20,9 @@ namespace OnlineStoreApplication
         {
             return Context.OrderLines.Find(id);
         }
-        public List<OrderLine> GetOrderLinesByUser(string mail)
+        public List<OrderLine> GetOrderLinesByUser(string name)
         {
-            var temp =  Context.Users.Where(s => s.Email == mail).ToList();
+            var temp =  Context.Users.Where(s => s.UserName == name).ToList();
             if (temp.Count > 0)
                 return temp[0].ShoppingCart.OrderLines;
             return new List<OrderLine>();
@@ -39,9 +39,9 @@ namespace OnlineStoreApplication
             Context.SaveChanges();
         }
 
-        public void EmptyShoppingCart(string  mail)
+        public void EmptyShoppingCart(string  name)
         {
-            var user = GetCurrentUser(mail);
+            var user = GetCurrentUser(name);
             user.ShoppingCart = new ShoppingCart();
             Context.SaveChanges();
                 

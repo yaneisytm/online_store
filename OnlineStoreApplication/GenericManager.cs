@@ -19,8 +19,8 @@ namespace OnlineStoreApplication
             Context = context;
 
         }
-        public ApplicationUser GetCurrentUser(string mail) {
-            return Context.Users.Where(u => u.Email == mail).First();
+        public ApplicationUser GetCurrentUser(string name) {
+            return Context.Users.Where(u => u.UserName == name).First();
 
 
         }

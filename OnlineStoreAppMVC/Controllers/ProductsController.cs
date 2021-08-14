@@ -86,7 +86,8 @@ namespace OnlineStore.Controllers
             Product product = manager.GetById(id_);
             product.Stock = product.Stock - quantity_;
             manager.Edit(product);
-
+            if (user.ShoppingCart == null)
+            { user.ShoppingCart = new ShoppingCart(); };
             var old_ol = user.ShoppingCart.OrderLines.Where(o => o.Product.Id == product.Id).ToList();
             var orderline = new OrderLine();
             if (old_ol.Count > 0)

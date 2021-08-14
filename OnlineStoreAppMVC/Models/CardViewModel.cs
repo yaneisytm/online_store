@@ -22,6 +22,7 @@ namespace OnlineStoreAppMVC.Models
         [Required]
         [Display(Name = "Expiration Month")]
         [IntegerParse("Not a valid month.")]
+        [ValidMonth]
         [StringLength(2, ErrorMessage = "Invalid month length.")]
         public string ExpMonth { get; set; }
 

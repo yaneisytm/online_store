@@ -182,7 +182,6 @@
     <Compile Include="Controllers\PaymentController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Controllers\RolesAppsController.cs" />
-    <Compile Include="Controllers\ShoppingCartsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -191,6 +190,7 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\ValidationAttributes\IntegerParse.cs" />
     <Compile Include="Models\ValidationAttributes\NotExpiredCard.cs" />
+    <Compile Include="Models\ValidationAttributes\ValidMonth.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
